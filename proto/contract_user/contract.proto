@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package contract_user;
 
-option go_package = "github.com/techvify-oliver/protoserver/contract_user";
+option go_package = "github.com/techvify-oliver/protoserver/generated/contract_user";
 
 message CheckParticipantsRequest {
   string planner_id = 1;

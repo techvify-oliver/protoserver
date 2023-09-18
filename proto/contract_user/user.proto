@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-package contract_user;
-
-option go_package = "github.com/techvify-oliver/protoserver/contract_user";
