@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package contract_user;
+
+option go_package = "github.com/techvify-oliver/protoserver/contract_user";
+
+message CheckParticipantsRequest {
+  string planner_id = 1;
+  string vendor_id = 2;
+}
+
+message CheckParticipantsResponse {
+  bool approve = 1;
+}
+
+service ContractService {
+  rpc CheckParticipants(CheckParticipantsRequest) returns (CheckParticipantsResponse);
+}
