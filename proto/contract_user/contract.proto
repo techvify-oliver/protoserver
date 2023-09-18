@@ -5,8 +5,8 @@ package contract_user;
 option go_package = "github.com/techvify-oliver/protoserver/generated/contract_user";
 
 message CheckParticipantsRequest {
-  string planner_id = 1;
-  string vendor_id = 2;
+  int32 planner_id = 1;
+  int32 vendor_id = 2;
 }
 
 message CheckParticipantsResponse {
