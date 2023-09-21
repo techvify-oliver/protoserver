@@ -8,18 +8,17 @@ option go_package = "github.com/techvify-oliver/protoserver/generated/auth_user"
 
 message UserDetailsResponse {
   int64 user_id = 1;
-  string user_name = 2;
-  string first_name = 3;
-  string last_name = 4;
-  string group_name = 5; // group in query field
-  string role = 6;
+  string first_name = 2;
+  string last_name = 3;
+  string group_name = 4; // "group" in query field
+  string role = 5;
   message GroupOfUser {
     int64 group_id = 1;
     string group_name = 2;
     string group_address = 3;
     string group_email = 4;
   }
-  GroupOfUser group = 7;
+  GroupOfUser group = 6;
 }
 
 message GetUserRequest {
