@@ -4,8 +4,6 @@ package auth_user;
 
 option go_package = "github.com/techvify-oliver/protoserver/generated/auth_user";
 
-
-
 message UserDetailsResponse {
   int64 user_id = 1;
   string first_name = 2;
