@@ -1,18 +1,28 @@
 syntax = "proto3";
 
-import "google/protobuf/any.proto";
-
 package auth_user;
 
 option go_package = "github.com/techvify-oliver/protoserver/generated/auth_user";
 
+
+
+message UserDetailsResponse {
+  int64 user_id = 1;
+  string user_name = 2;
+
+  message GroupOfUser {
+    int64 group_id = 1;
+    string group_name = 2;
+  }
+  GroupOfUser group = 3;
+}
+
 message GetUserRequest {
   int64 user_id = 1;
 }
-
 message GetUserResponse {
-  google.protobuf.Any user = 1;
-  bool is_error = 2;
+  bool is_error = 1;
+  UserDetailsResponse user = 2;
 }
 
 service AuthService {
