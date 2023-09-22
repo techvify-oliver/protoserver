@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v4.24.2
-// source: proto/contract_user/contract.proto
+// source: proto/contract_request_group/contract_request_group.proto
 
 package contract_user
 
@@ -35,7 +35,7 @@ func NewContractServiceClient(cc grpc.ClientConnInterface) ContractServiceClient
 
 func (c *contractServiceClient) GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error) {
 	out := new(GetGroupDetailsResponse)
-	err := c.cc.Invoke(ctx, "/contract_user.ContractService/GetGroupDetails", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/contract_request_group.ContractService/GetGroupDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _ContractService_GetGroupDetails_Handler(srv interface{}, ctx context.Conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/contract_user.ContractService/GetGroupDetails",
+		FullMethod: "/contract_request_group.ContractService/GetGroupDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ContractServiceServer).GetGroupDetails(ctx, req.(*GetGroupDetailsRequest))
@@ -92,7 +92,7 @@ func _ContractService_GetGroupDetails_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ContractService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "contract_user.ContractService",
+	ServiceName: "contract_request_group.ContractService",
 	HandlerType: (*ContractServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -101,5 +101,5 @@ var ContractService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/contract_user/contract.proto",
+	Metadata: "proto/contract_request_group/contract_request_group.proto",
 }

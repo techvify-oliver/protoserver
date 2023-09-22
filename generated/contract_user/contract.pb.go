@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v4.24.2
-// source: proto/contract_user/contract.proto
+// source: proto/contract_request_group/contract_request_group.proto
 
 package contract_user
 
@@ -176,12 +176,12 @@ func file_proto_contract_user_contract_proto_rawDescGZIP() []byte {
 
 var file_proto_contract_user_contract_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_contract_user_contract_proto_goTypes = []interface{}{
-	(*GetGroupDetailsRequest)(nil),  // 0: contract_user.GetGroupDetailsRequest
-	(*GetGroupDetailsResponse)(nil), // 1: contract_user.GetGroupDetailsResponse
+	(*GetGroupDetailsRequest)(nil),  // 0: contract_request_group.GetGroupDetailsRequest
+	(*GetGroupDetailsResponse)(nil), // 1: contract_request_group.GetGroupDetailsResponse
 }
 var file_proto_contract_user_contract_proto_depIdxs = []int32{
-	0, // 0: contract_user.ContractService.GetGroupDetails:input_type -> contract_user.GetGroupDetailsRequest
-	1, // 1: contract_user.ContractService.GetGroupDetails:output_type -> contract_user.GetGroupDetailsResponse
+	0, // 0: contract_request_group.ContractService.GetGroupDetails:input_type -> contract_request_group.GetGroupDetailsRequest
+	1, // 1: contract_request_group.ContractService.GetGroupDetails:output_type -> contract_request_group.GetGroupDetailsResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
