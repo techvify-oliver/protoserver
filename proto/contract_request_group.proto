@@ -3,9 +3,6 @@ syntax = "proto3";
 package protoGRPC;
 option go_package = "github.com/techvify-oliver/protoserver/generated";
 
-// Type
-import "google/protobuf/timestamp.proto";
-
 // Other proto
 import "contract_details.proto";
 import "group_details.proto";
