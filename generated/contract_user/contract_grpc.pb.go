@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContractServiceClient interface {
-	CheckParticipants(ctx context.Context, in *CheckParticipantsRequest, opts ...grpc.CallOption) (*CheckParticipantsResponse, error)
+	GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error)
 }
 
 type contractServiceClient struct {
@@ -33,9 +33,9 @@ func NewContractServiceClient(cc grpc.ClientConnInterface) ContractServiceClient
 	return &contractServiceClient{cc}
 }
 
-func (c *contractServiceClient) CheckParticipants(ctx context.Context, in *CheckParticipantsRequest, opts ...grpc.CallOption) (*CheckParticipantsResponse, error) {
-	out := new(CheckParticipantsResponse)
-	err := c.cc.Invoke(ctx, "/contract_user.ContractService/CheckParticipants", in, out, opts...)
+func (c *contractServiceClient) GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error) {
+	out := new(GetGroupDetailsResponse)
+	err := c.cc.Invoke(ctx, "/contract_user.ContractService/GetGroupDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *contractServiceClient) CheckParticipants(ctx context.Context, in *Check
 // All implementations must embed UnimplementedContractServiceServer
 // for forward compatibility
 type ContractServiceServer interface {
-	CheckParticipants(context.Context, *CheckParticipantsRequest) (*CheckParticipantsResponse, error)
+	GetGroupDetails(context.Context, *GetGroupDetailsRequest) (*GetGroupDetailsResponse, error)
 	mustEmbedUnimplementedContractServiceServer()
 }
 
@@ -54,8 +54,8 @@ type ContractServiceServer interface {
 type UnimplementedContractServiceServer struct {
 }
 
-func (UnimplementedContractServiceServer) CheckParticipants(context.Context, *CheckParticipantsRequest) (*CheckParticipantsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckParticipants not implemented")
+func (UnimplementedContractServiceServer) GetGroupDetails(context.Context, *GetGroupDetailsRequest) (*GetGroupDetailsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupDetails not implemented")
 }
 func (UnimplementedContractServiceServer) mustEmbedUnimplementedContractServiceServer() {}
 
@@ -70,20 +70,20 @@ func RegisterContractServiceServer(s grpc.ServiceRegistrar, srv ContractServiceS
 	s.RegisterService(&ContractService_ServiceDesc, srv)
 }
 
-func _ContractService_CheckParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckParticipantsRequest)
+func _ContractService_GetGroupDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGroupDetailsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContractServiceServer).CheckParticipants(ctx, in)
+		return srv.(ContractServiceServer).GetGroupDetails(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/contract_user.ContractService/CheckParticipants",
+		FullMethod: "/contract_user.ContractService/GetGroupDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContractServiceServer).CheckParticipants(ctx, req.(*CheckParticipantsRequest))
+		return srv.(ContractServiceServer).GetGroupDetails(ctx, req.(*GetGroupDetailsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -96,8 +96,8 @@ var ContractService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContractServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CheckParticipants",
-			Handler:    _ContractService_CheckParticipants_Handler,
+			MethodName: "GetGroupDetails",
+			Handler:    _ContractService_GetGroupDetails_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

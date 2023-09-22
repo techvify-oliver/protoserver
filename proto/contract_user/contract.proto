@@ -4,15 +4,16 @@ package contract_user;
 
 option go_package = "github.com/techvify-oliver/protoserver/generated/contract_user";
 
-message CheckParticipantsRequest {
-  int32 planner_id = 1;
-  int32 vendor_id = 2;
+message GetGroupDetailsRequest {
+  int64 vendor_id = 1;
 }
 
-message CheckParticipantsResponse {
-  bool approve = 1;
+message GetGroupDetailsResponse {
+  string vendor_name = 1;
+  string vendor_address = 2;
+  string vendor_email = 3;
 }
 
 service ContractService {
-  rpc CheckParticipants(CheckParticipantsRequest) returns (CheckParticipantsResponse);
+  rpc GetGroupDetails(GetGroupDetailsRequest) returns (GetGroupDetailsResponse);
 }
