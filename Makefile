@@ -2,9 +2,7 @@
 
 GO_MODULE=github.com/techvify-oliver/protoserver
 
-
-.PHONY: git
-
+.PHONY: git tag
 
 gen_contract-user:
 	protoc --go_opt=module=${GO_MODULE} --go_out=. \
@@ -18,3 +16,6 @@ gen_contract-group-request:
 
 git:
 	.\gitcombo.bat
+
+tag: # get latest tag
+	git describe --tags $(git rev-list --tags --max-count=1)

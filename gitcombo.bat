@@ -4,6 +4,8 @@ set /p tag="Enter tag: "
 
 git add .
 git commit -m "%message%"
+
+
 git tag %tag%
 git push
 git push --tags
