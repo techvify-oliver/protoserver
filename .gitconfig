@@ -1,2 +1,2 @@
 [alias]
-    addmit = !git add . && git commit -m
+    forcemit = !git add . && git commit -m

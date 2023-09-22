@@ -1,8 +1,7 @@
 syntax = "proto3";
 
-package auth_user;
-
-option go_package = "github.com/techvify-oliver/protoserver/generated/auth_user";
+package protoGRPC;
+option go_package = "github.com/techvify-oliver/protoserver/generated";
 
 message UserDetailsResponse {
   int64 user_id = 1;
@@ -25,8 +24,4 @@ message GetUserRequest {
 message GetUserResponse {
   bool is_error = 1;
   UserDetailsResponse user = 2;
-}
-
-service AuthService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
 }
