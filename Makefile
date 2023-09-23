@@ -5,12 +5,12 @@ GO_MODULE=github.com/techvify-oliver/protoserver
 .PHONY: git tag
 
 gen:
-	protoc --proto_path=./proto_gwclient_svserver --go_opt=module=${GO_MODULE} --go_out=. \
+	protoc --proto_path=./proto --go_opt=module=${GO_MODULE} --go_out=. \
 	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
-	./proto_gwclient_svserver/*.proto
-	protoc --proto_path=./proto_svclient_gwserver --go_opt=module=${GO_MODULE} --go_out=. \
-	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
-	./proto_svclient_gwserver/*.proto
+	./proto/*.proto
+#	protoc --proto_path=./proto_svclient_gwserver --go_opt=module=${GO_MODULE} --go_out=. \
+#	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
+#	./proto_svclient_gwserver/*.proto
 
 git:
 	.\gitcombo.bat
