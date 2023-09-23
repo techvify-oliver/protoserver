@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package protoGRPC;
-option go_package = "github.com/techvify-oliver/protoserver/generated";
+option go_package = "github.com/techvify-oliver/protoserver/svclient-gwserver";
 
 // Other proto
 import "contract_details.proto";

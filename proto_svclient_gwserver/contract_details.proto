@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package protoGRPC;
-option go_package = "github.com/techvify-oliver/protoserver/generated";
+option go_package = "github.com/techvify-oliver/protoserver/svclient-gwserver";
 
 import "google/protobuf/timestamp.proto";
 

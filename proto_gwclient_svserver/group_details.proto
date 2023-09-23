@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package protoGRPCagw;
-option go_package = "github.com/techvify-oliver/protoserver/generated_agw";
+option go_package = "github.com/techvify-oliver/protoserver/gwclient-svserver";
 
 // Get group details
 message GetGroupDetailsRequest {
