@@ -17,5 +17,6 @@ service Service {
   // Main
   rpc GetGroupDetails(GetGroupDetailsRequest) returns (GetGroupDetailsResponse);
   rpc GetRequestDetails(GetWithdrawsRequest) returns (GetWithdrawsResponse);
+  rpc GetRequestByGroupID(GetRequestByGroupIDRequest) returns (GetRequestByGroupIDResponse);
   rpc GetContractDetails(GetContractRequest) returns (GetContractResponse);
 }

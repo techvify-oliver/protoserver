@@ -6,6 +6,5 @@ git add .
 git commit -m "%message%"
 
 
-git tag %tag%
-git push
-git push --tags
+git tag v%tag%
+git push origin main --tags

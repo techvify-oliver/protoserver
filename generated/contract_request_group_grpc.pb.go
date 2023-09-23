@@ -27,6 +27,7 @@ type ServiceClient interface {
 	// Main
 	GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error)
 	GetRequestDetails(ctx context.Context, in *GetWithdrawsRequest, opts ...grpc.CallOption) (*GetWithdrawsResponse, error)
+	GetRequestByGroupID(ctx context.Context, in *GetRequestByGroupIDRequest, opts ...grpc.CallOption) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error)
 }
 
@@ -65,6 +66,15 @@ func (c *serviceClient) GetRequestDetails(ctx context.Context, in *GetWithdrawsR
 	return out, nil
 }
 
+func (c *serviceClient) GetRequestByGroupID(ctx context.Context, in *GetRequestByGroupIDRequest, opts ...grpc.CallOption) (*GetRequestByGroupIDResponse, error) {
+	out := new(GetRequestByGroupIDResponse)
+	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetRequestByGroupID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *serviceClient) GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error) {
 	out := new(GetContractResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetContractDetails", in, out, opts...)
@@ -83,6 +93,7 @@ type ServiceServer interface {
 	// Main
 	GetGroupDetails(context.Context, *GetGroupDetailsRequest) (*GetGroupDetailsResponse, error)
 	GetRequestDetails(context.Context, *GetWithdrawsRequest) (*GetWithdrawsResponse, error)
+	GetRequestByGroupID(context.Context, *GetRequestByGroupIDRequest) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
@@ -99,6 +110,9 @@ func (UnimplementedServiceServer) GetGroupDetails(context.Context, *GetGroupDeta
 }
 func (UnimplementedServiceServer) GetRequestDetails(context.Context, *GetWithdrawsRequest) (*GetWithdrawsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRequestDetails not implemented")
+}
+func (UnimplementedServiceServer) GetRequestByGroupID(context.Context, *GetRequestByGroupIDRequest) (*GetRequestByGroupIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRequestByGroupID not implemented")
 }
 func (UnimplementedServiceServer) GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractDetails not implemented")
@@ -170,6 +184,24 @@ func _Service_GetRequestDetails_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_GetRequestByGroupID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRequestByGroupIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).GetRequestByGroupID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/protoGRPCagw.Service/GetRequestByGroupID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).GetRequestByGroupID(ctx, req.(*GetRequestByGroupIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Service_GetContractDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetContractRequest)
 	if err := dec(in); err != nil {
@@ -206,6 +238,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRequestDetails",
 			Handler:    _Service_GetRequestDetails_Handler,
+		},
+		{
+			MethodName: "GetRequestByGroupID",
+			Handler:    _Service_GetRequestByGroupID_Handler,
 		},
 		{
 			MethodName: "GetContractDetails",

@@ -156,6 +156,140 @@ func (x *GetWithdrawsResponse) GetCollectionDate() *timestamppb.Timestamp {
 	return nil
 }
 
+type GetRequestByGroupIDRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+}
+
+func (x *GetRequestByGroupIDRequest) Reset() {
+	*x = GetRequestByGroupIDRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_request_details_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetRequestByGroupIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRequestByGroupIDRequest) ProtoMessage() {}
+
+func (x *GetRequestByGroupIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_request_details_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRequestByGroupIDRequest.ProtoReflect.Descriptor instead.
+func (*GetRequestByGroupIDRequest) Descriptor() ([]byte, []int) {
+	return file_request_details_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetRequestByGroupIDRequest) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+type GetRequestByGroupIDResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ContractId     int64                  `protobuf:"varint,1,opt,name=contract_id,json=contractId,proto3" json:"contract_id,omitempty"`
+	VendorId       int64                  `protobuf:"varint,2,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	ContractorId   int64                  `protobuf:"varint,3,opt,name=contractor_id,json=contractorId,proto3" json:"contractor_id,omitempty"`
+	Amount         int32                  `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	Status         string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	CollectionDate *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=collection_date,json=collectionDate,proto3" json:"collection_date,omitempty"`
+}
+
+func (x *GetRequestByGroupIDResponse) Reset() {
+	*x = GetRequestByGroupIDResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_request_details_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetRequestByGroupIDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRequestByGroupIDResponse) ProtoMessage() {}
+
+func (x *GetRequestByGroupIDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_request_details_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRequestByGroupIDResponse.ProtoReflect.Descriptor instead.
+func (*GetRequestByGroupIDResponse) Descriptor() ([]byte, []int) {
+	return file_request_details_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetRequestByGroupIDResponse) GetContractId() int64 {
+	if x != nil {
+		return x.ContractId
+	}
+	return 0
+}
+
+func (x *GetRequestByGroupIDResponse) GetVendorId() int64 {
+	if x != nil {
+		return x.VendorId
+	}
+	return 0
+}
+
+func (x *GetRequestByGroupIDResponse) GetContractorId() int64 {
+	if x != nil {
+		return x.ContractorId
+	}
+	return 0
+}
+
+func (x *GetRequestByGroupIDResponse) GetAmount() int32 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *GetRequestByGroupIDResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *GetRequestByGroupIDResponse) GetCollectionDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CollectionDate
+	}
+	return nil
+}
+
 var File_request_details_proto protoreflect.FileDescriptor
 
 var file_request_details_proto_rawDesc = []byte{
@@ -181,11 +315,30 @@ var file_request_details_proto_rawDesc = []byte{
 	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0e, 0x63,
-	0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x42, 0x32, 0x5a,
-	0x30, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x65, 0x63, 0x68,
-	0x76, 0x69, 0x66, 0x79, 0x2d, 0x6f, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65,
-	0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x22, 0x37, 0x0a,
+	0x1a, 0x47, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x42, 0x79, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x49, 0x44, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x19, 0x0a, 0x08, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x22, 0xf5, 0x01, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x42, 0x79, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x44, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x63, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x76, 0x65, 0x6e, 0x64, 0x6f,
+	0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x76, 0x65, 0x6e, 0x64,
+	0x6f, 0x72, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x63, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6d, 0x6f,
+	0x75, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e,
+	0x74, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x43, 0x0a, 0x0f, 0x63, 0x6f, 0x6c,
+	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0e,
+	0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x42, 0x32,
+	0x5a, 0x30, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x65, 0x63,
+	0x68, 0x76, 0x69, 0x66, 0x79, 0x2d, 0x6f, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74,
+	0x65, 0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -200,19 +353,22 @@ func file_request_details_proto_rawDescGZIP() []byte {
 	return file_request_details_proto_rawDescData
 }
 
-var file_request_details_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_request_details_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_request_details_proto_goTypes = []interface{}{
-	(*GetWithdrawsRequest)(nil),   // 0: protoGRPCagw.GetWithdrawsRequest
-	(*GetWithdrawsResponse)(nil),  // 1: protoGRPCagw.GetWithdrawsResponse
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*GetWithdrawsRequest)(nil),         // 0: protoGRPCagw.GetWithdrawsRequest
+	(*GetWithdrawsResponse)(nil),        // 1: protoGRPCagw.GetWithdrawsResponse
+	(*GetRequestByGroupIDRequest)(nil),  // 2: protoGRPCagw.GetRequestByGroupIDRequest
+	(*GetRequestByGroupIDResponse)(nil), // 3: protoGRPCagw.GetRequestByGroupIDResponse
+	(*timestamppb.Timestamp)(nil),       // 4: google.protobuf.Timestamp
 }
 var file_request_details_proto_depIdxs = []int32{
-	2, // 0: protoGRPCagw.GetWithdrawsResponse.collection_date:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: protoGRPCagw.GetWithdrawsResponse.collection_date:type_name -> google.protobuf.Timestamp
+	4, // 1: protoGRPCagw.GetRequestByGroupIDResponse.collection_date:type_name -> google.protobuf.Timestamp
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_request_details_proto_init() }
@@ -245,6 +401,30 @@ func file_request_details_proto_init() {
 				return nil
 			}
 		}
+		file_request_details_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRequestByGroupIDRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_request_details_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRequestByGroupIDResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -252,7 +432,7 @@ func file_request_details_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_request_details_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
