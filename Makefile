@@ -9,6 +9,11 @@ gen:
 	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
 	./proto/*.proto
 
+gateway:
+	protoc --proto_path=./proto_agw --go_opt=module=${GO_MODULE} --go_out=. \
+	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
+	./proto_agw/*.proto
+
 git:
 	.\gitcombo.bat
 

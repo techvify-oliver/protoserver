@@ -9,11 +9,28 @@ import "group_details.proto";
 import "user_details.proto";
 import "request_details.proto";
 
+message GetUserRequestGW {
+  string type = 1;
+  GetUserRequest req = 2;
+}
+message GetGroupDetailsRequestGW {
+  string type = 1;
+  GetGroupDetailsRequest req = 2;
+}
+message GetWithdrawsRequestGW {
+  string type = 1;
+  GetWithdrawsRequest req = 2;
+}
+message GetContractRequestGW {
+  string type = 1;
+  GetContractRequest req = 2;
+}
+
 service Service {
   // Auth
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc GetUser(GetUserRequestGW) returns (GetUserResponse);
   // Main
-  rpc GetGroupDetails(GetGroupDetailsRequest) returns (GetGroupDetailsResponse);
-  rpc GetRequestDetails(GetWithdrawsRequest) returns (GetWithdrawsResponse);
+  rpc GetGroupDetails(GetGroupDetailsRequestGW) returns (GetGroupDetailsResponse);
+  rpc GetRequestDetails(GetWithdrawsRequestGW) returns (GetWithdrawsResponse);
   rpc GetContractDetails(GetContractRequest) returns (GetContractResponse);
 }
