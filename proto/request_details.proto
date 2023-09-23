@@ -25,11 +25,15 @@ message GetRequestByGroupIDRequest {
   int64 group_id = 1;
 }
 
-message GetRequestByGroupIDResponse {
+message GetRequestByGroupID {
   int64 contract_id = 1;
   int64 vendor_id = 2;
   int64 contractor_id = 3;
   int32 amount = 4;
   string status = 5;
   google.protobuf.Timestamp collection_date = 6;
+}
+
+message GetRequestByGroupIDResponse {
+  repeated GetRequestByGroupID withdraw_requests = 1;
 }
