@@ -7,7 +7,6 @@
 package generated
 
 import (
-	gwclient_svserver "github.com/techvify-oliver/protoserver/gwclient-svserver"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -61,14 +60,14 @@ var file_contract_request_group_proto_rawDesc = []byte{
 }
 
 var file_contract_request_group_proto_goTypes = []interface{}{
-	(*gwclient_svserver.GetUserRequest)(nil),          // 0: protoGRPCagw.GetUserRequest
-	(*gwclient_svserver.GetGroupDetailsRequest)(nil),  // 1: protoGRPCagw.GetGroupDetailsRequest
-	(*gwclient_svserver.GetWithdrawsRequest)(nil),     // 2: protoGRPCagw.GetWithdrawsRequest
-	(*gwclient_svserver.GetContractRequest)(nil),      // 3: protoGRPCagw.GetContractRequest
-	(*gwclient_svserver.GetUserResponse)(nil),         // 4: protoGRPCagw.GetUserResponse
-	(*gwclient_svserver.GetGroupDetailsResponse)(nil), // 5: protoGRPCagw.GetGroupDetailsResponse
-	(*gwclient_svserver.GetWithdrawsResponse)(nil),    // 6: protoGRPCagw.GetWithdrawsResponse
-	(*gwclient_svserver.GetContractResponse)(nil),     // 7: protoGRPCagw.GetContractResponse
+	(*GetUserRequest)(nil),          // 0: protoGRPCagw.GetUserRequest
+	(*GetGroupDetailsRequest)(nil),  // 1: protoGRPCagw.GetGroupDetailsRequest
+	(*GetWithdrawsRequest)(nil),     // 2: protoGRPCagw.GetWithdrawsRequest
+	(*GetContractRequest)(nil),      // 3: protoGRPCagw.GetContractRequest
+	(*GetUserResponse)(nil),         // 4: protoGRPCagw.GetUserResponse
+	(*GetGroupDetailsResponse)(nil), // 5: protoGRPCagw.GetGroupDetailsResponse
+	(*GetWithdrawsResponse)(nil),    // 6: protoGRPCagw.GetWithdrawsResponse
+	(*GetContractResponse)(nil),     // 7: protoGRPCagw.GetContractResponse
 }
 var file_contract_request_group_proto_depIdxs = []int32{
 	0, // 0: protoGRPCagw.Service.GetUser:input_type -> protoGRPCagw.GetUserRequest
@@ -91,6 +90,10 @@ func file_contract_request_group_proto_init() {
 	if File_contract_request_group_proto != nil {
 		return
 	}
+	file_contract_details_proto_init()
+	file_group_details_proto_init()
+	file_user_details_proto_init()
+	file_request_details_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

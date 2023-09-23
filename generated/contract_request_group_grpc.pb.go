@@ -8,7 +8,6 @@ package generated
 
 import (
 	context "context"
-	gwclient_svserver "github.com/techvify-oliver/protoserver/gwclient-svserver"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -24,11 +23,11 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServiceClient interface {
 	// Auth
-	GetUser(ctx context.Context, in *gwclient_svserver.GetUserRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetUserResponse, error)
+	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// Main
-	GetGroupDetails(ctx context.Context, in *gwclient_svserver.GetGroupDetailsRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetGroupDetailsResponse, error)
-	GetRequestDetails(ctx context.Context, in *gwclient_svserver.GetWithdrawsRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetWithdrawsResponse, error)
-	GetContractDetails(ctx context.Context, in *gwclient_svserver.GetContractRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetContractResponse, error)
+	GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error)
+	GetRequestDetails(ctx context.Context, in *GetWithdrawsRequest, opts ...grpc.CallOption) (*GetWithdrawsResponse, error)
+	GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error)
 }
 
 type serviceClient struct {
@@ -39,8 +38,8 @@ func NewServiceClient(cc grpc.ClientConnInterface) ServiceClient {
 	return &serviceClient{cc}
 }
 
-func (c *serviceClient) GetUser(ctx context.Context, in *gwclient_svserver.GetUserRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetUserResponse, error) {
-	out := new(gwclient_svserver.GetUserResponse)
+func (c *serviceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	out := new(GetUserResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -48,8 +47,8 @@ func (c *serviceClient) GetUser(ctx context.Context, in *gwclient_svserver.GetUs
 	return out, nil
 }
 
-func (c *serviceClient) GetGroupDetails(ctx context.Context, in *gwclient_svserver.GetGroupDetailsRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetGroupDetailsResponse, error) {
-	out := new(gwclient_svserver.GetGroupDetailsResponse)
+func (c *serviceClient) GetGroupDetails(ctx context.Context, in *GetGroupDetailsRequest, opts ...grpc.CallOption) (*GetGroupDetailsResponse, error) {
+	out := new(GetGroupDetailsResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetGroupDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -57,8 +56,8 @@ func (c *serviceClient) GetGroupDetails(ctx context.Context, in *gwclient_svserv
 	return out, nil
 }
 
-func (c *serviceClient) GetRequestDetails(ctx context.Context, in *gwclient_svserver.GetWithdrawsRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetWithdrawsResponse, error) {
-	out := new(gwclient_svserver.GetWithdrawsResponse)
+func (c *serviceClient) GetRequestDetails(ctx context.Context, in *GetWithdrawsRequest, opts ...grpc.CallOption) (*GetWithdrawsResponse, error) {
+	out := new(GetWithdrawsResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetRequestDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -66,8 +65,8 @@ func (c *serviceClient) GetRequestDetails(ctx context.Context, in *gwclient_svse
 	return out, nil
 }
 
-func (c *serviceClient) GetContractDetails(ctx context.Context, in *gwclient_svserver.GetContractRequest, opts ...grpc.CallOption) (*gwclient_svserver.GetContractResponse, error) {
-	out := new(gwclient_svserver.GetContractResponse)
+func (c *serviceClient) GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error) {
+	out := new(GetContractResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetContractDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -80,11 +79,11 @@ func (c *serviceClient) GetContractDetails(ctx context.Context, in *gwclient_svs
 // for forward compatibility
 type ServiceServer interface {
 	// Auth
-	GetUser(context.Context, *gwclient_svserver.GetUserRequest) (*gwclient_svserver.GetUserResponse, error)
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	// Main
-	GetGroupDetails(context.Context, *gwclient_svserver.GetGroupDetailsRequest) (*gwclient_svserver.GetGroupDetailsResponse, error)
-	GetRequestDetails(context.Context, *gwclient_svserver.GetWithdrawsRequest) (*gwclient_svserver.GetWithdrawsResponse, error)
-	GetContractDetails(context.Context, *gwclient_svserver.GetContractRequest) (*gwclient_svserver.GetContractResponse, error)
+	GetGroupDetails(context.Context, *GetGroupDetailsRequest) (*GetGroupDetailsResponse, error)
+	GetRequestDetails(context.Context, *GetWithdrawsRequest) (*GetWithdrawsResponse, error)
+	GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -92,16 +91,16 @@ type ServiceServer interface {
 type UnimplementedServiceServer struct {
 }
 
-func (UnimplementedServiceServer) GetUser(context.Context, *gwclient_svserver.GetUserRequest) (*gwclient_svserver.GetUserResponse, error) {
+func (UnimplementedServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
-func (UnimplementedServiceServer) GetGroupDetails(context.Context, *gwclient_svserver.GetGroupDetailsRequest) (*gwclient_svserver.GetGroupDetailsResponse, error) {
+func (UnimplementedServiceServer) GetGroupDetails(context.Context, *GetGroupDetailsRequest) (*GetGroupDetailsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGroupDetails not implemented")
 }
-func (UnimplementedServiceServer) GetRequestDetails(context.Context, *gwclient_svserver.GetWithdrawsRequest) (*gwclient_svserver.GetWithdrawsResponse, error) {
+func (UnimplementedServiceServer) GetRequestDetails(context.Context, *GetWithdrawsRequest) (*GetWithdrawsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRequestDetails not implemented")
 }
-func (UnimplementedServiceServer) GetContractDetails(context.Context, *gwclient_svserver.GetContractRequest) (*gwclient_svserver.GetContractResponse, error) {
+func (UnimplementedServiceServer) GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractDetails not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
@@ -118,7 +117,7 @@ func RegisterServiceServer(s grpc.ServiceRegistrar, srv ServiceServer) {
 }
 
 func _Service_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(gwclient_svserver.GetUserRequest)
+	in := new(GetUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -130,13 +129,13 @@ func _Service_GetUser_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/protoGRPCagw.Service/GetUser",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GetUser(ctx, req.(*gwclient_svserver.GetUserRequest))
+		return srv.(ServiceServer).GetUser(ctx, req.(*GetUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Service_GetGroupDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(gwclient_svserver.GetGroupDetailsRequest)
+	in := new(GetGroupDetailsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -148,13 +147,13 @@ func _Service_GetGroupDetails_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/protoGRPCagw.Service/GetGroupDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GetGroupDetails(ctx, req.(*gwclient_svserver.GetGroupDetailsRequest))
+		return srv.(ServiceServer).GetGroupDetails(ctx, req.(*GetGroupDetailsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Service_GetRequestDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(gwclient_svserver.GetWithdrawsRequest)
+	in := new(GetWithdrawsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -166,13 +165,13 @@ func _Service_GetRequestDetails_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/protoGRPCagw.Service/GetRequestDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GetRequestDetails(ctx, req.(*gwclient_svserver.GetWithdrawsRequest))
+		return srv.(ServiceServer).GetRequestDetails(ctx, req.(*GetWithdrawsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Service_GetContractDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(gwclient_svserver.GetContractRequest)
+	in := new(GetContractRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -184,7 +183,7 @@ func _Service_GetContractDetails_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/protoGRPCagw.Service/GetContractDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GetContractDetails(ctx, req.(*gwclient_svserver.GetContractRequest))
+		return srv.(ServiceServer).GetContractDetails(ctx, req.(*GetContractRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

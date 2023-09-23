@@ -3,6 +3,7 @@ syntax = "proto3";
 package protoGRPCagw;
 option go_package = "github.com/techvify-oliver/protoserver/generated";
 
+
 // Other proto
 import "contract_details.proto";
 import "group_details.proto";
