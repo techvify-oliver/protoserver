@@ -20,3 +20,18 @@ message GetContractResponse {
   int32 total_amount = 5;
   int32 remaining_amount = 6;
 }
+
+message GetContractByGroupIDRequest {
+  int64 group_id = 1;
+}
+message GetContractByGroupID {
+  int64 vendor_id = 1;
+  string status = 2;
+  google.protobuf.Timestamp start_date = 3;
+  google.protobuf.Timestamp end_date = 4;
+  int32 total_amount = 5;
+  int32 remaining_amount = 6;
+}
+message GetContractByGroupIDResponse {
+  repeated GetContractByGroupID withdraw_requests = 1;
+}

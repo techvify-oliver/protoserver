@@ -24,7 +24,6 @@ message GetWithdrawsResponse {
 message GetRequestByGroupIDRequest {
   int64 group_id = 1;
 }
-
 message GetRequestByGroupID {
   int64 contract_id = 1;
   int64 vendor_id = 2;
@@ -33,7 +32,6 @@ message GetRequestByGroupID {
   string status = 5;
   google.protobuf.Timestamp collection_date = 6;
 }
-
 message GetRequestByGroupIDResponse {
   repeated GetRequestByGroupID withdraw_requests = 1;
 }
