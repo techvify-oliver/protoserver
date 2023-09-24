@@ -31,6 +31,7 @@ type ServiceClient interface {
 	GetRequestsByContractorID(ctx context.Context, in *GetRequestByGroupIDRequest, opts ...grpc.CallOption) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error)
 	GetContractsByVendorID(ctx context.Context, in *GetContractByGroupIDRequest, opts ...grpc.CallOption) (*GetContractByGroupIDResponse, error)
+	RemoveAmountFromContractAfterCollected(ctx context.Context, in *RemoveAmountAfterCollectedRequest, opts ...grpc.CallOption) (*RemoveAmountAfterCollectedResponse, error)
 }
 
 type serviceClient struct {
@@ -104,6 +105,15 @@ func (c *serviceClient) GetContractsByVendorID(ctx context.Context, in *GetContr
 	return out, nil
 }
 
+func (c *serviceClient) RemoveAmountFromContractAfterCollected(ctx context.Context, in *RemoveAmountAfterCollectedRequest, opts ...grpc.CallOption) (*RemoveAmountAfterCollectedResponse, error) {
+	out := new(RemoveAmountAfterCollectedResponse)
+	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/RemoveAmountFromContractAfterCollected", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility
@@ -117,6 +127,7 @@ type ServiceServer interface {
 	GetRequestsByContractorID(context.Context, *GetRequestByGroupIDRequest) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error)
 	GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractByGroupIDResponse, error)
+	RemoveAmountFromContractAfterCollected(context.Context, *RemoveAmountAfterCollectedRequest) (*RemoveAmountAfterCollectedResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -144,6 +155,9 @@ func (UnimplementedServiceServer) GetContractDetails(context.Context, *GetContra
 }
 func (UnimplementedServiceServer) GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractByGroupIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractsByVendorID not implemented")
+}
+func (UnimplementedServiceServer) RemoveAmountFromContractAfterCollected(context.Context, *RemoveAmountAfterCollectedRequest) (*RemoveAmountAfterCollectedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveAmountFromContractAfterCollected not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 
@@ -284,6 +298,24 @@ func _Service_GetContractsByVendorID_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_RemoveAmountFromContractAfterCollected_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveAmountAfterCollectedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).RemoveAmountFromContractAfterCollected(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/protoGRPCagw.Service/RemoveAmountFromContractAfterCollected",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).RemoveAmountFromContractAfterCollected(ctx, req.(*RemoveAmountAfterCollectedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -318,6 +350,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetContractsByVendorID",
 			Handler:    _Service_GetContractsByVendorID_Handler,
+		},
+		{
+			MethodName: "RemoveAmountFromContractAfterCollected",
+			Handler:    _Service_RemoveAmountFromContractAfterCollected_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

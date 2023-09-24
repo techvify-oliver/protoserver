@@ -36,3 +36,12 @@ message GetContractByGroupID {
 message GetContractByGroupIDResponse {
   repeated GetContractByGroupID contracts = 1;
 }
+
+message RemoveAmountAfterCollectedRequest {
+  int64 contract_id = 1;
+  int32 amount = 2;
+}
+
+message RemoveAmountAfterCollectedResponse {
+  bool isSuccess = 1;
+}

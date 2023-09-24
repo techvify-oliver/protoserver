@@ -24,4 +24,5 @@ service Service {
   rpc GetContractDetails(GetContractRequest) returns (GetContractResponse);
   rpc GetContractsByVendorID(GetContractByGroupIDRequest) returns (GetContractByGroupIDResponse);
 
+  rpc RemoveAmountFromContractAfterCollected(RemoveAmountAfterCollectedRequest) returns (RemoveAmountAfterCollectedResponse);
 }
