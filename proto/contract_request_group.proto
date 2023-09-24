@@ -22,6 +22,6 @@ service Service {
   rpc GetRequestsByContractorID(GetRequestByGroupIDRequest) returns (GetRequestByGroupIDResponse);
 
   rpc GetContractDetails(GetContractRequest) returns (GetContractResponse);
-  rpc GetContractsByVendorID(GetContractByGroupIDRequest) returns (GetContractResponse);
+  rpc GetContractsByVendorID(GetContractByGroupIDRequest) returns (GetContractByGroupIDResponse);
 
 }
