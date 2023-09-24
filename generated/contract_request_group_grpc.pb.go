@@ -30,7 +30,7 @@ type ServiceClient interface {
 	GetRequestsByVendorID(ctx context.Context, in *GetRequestByGroupIDRequest, opts ...grpc.CallOption) (*GetRequestByGroupIDResponse, error)
 	GetRequestsByContractorID(ctx context.Context, in *GetRequestByGroupIDRequest, opts ...grpc.CallOption) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(ctx context.Context, in *GetContractRequest, opts ...grpc.CallOption) (*GetContractResponse, error)
-	GetContractsByVendorID(ctx context.Context, in *GetContractByGroupIDRequest, opts ...grpc.CallOption) (*GetContractResponse, error)
+	GetContractsByVendorID(ctx context.Context, in *GetContractByGroupIDRequest, opts ...grpc.CallOption) (*GetContractByGroupIDResponse, error)
 }
 
 type serviceClient struct {
@@ -95,8 +95,8 @@ func (c *serviceClient) GetContractDetails(ctx context.Context, in *GetContractR
 	return out, nil
 }
 
-func (c *serviceClient) GetContractsByVendorID(ctx context.Context, in *GetContractByGroupIDRequest, opts ...grpc.CallOption) (*GetContractResponse, error) {
-	out := new(GetContractResponse)
+func (c *serviceClient) GetContractsByVendorID(ctx context.Context, in *GetContractByGroupIDRequest, opts ...grpc.CallOption) (*GetContractByGroupIDResponse, error) {
+	out := new(GetContractByGroupIDResponse)
 	err := c.cc.Invoke(ctx, "/protoGRPCagw.Service/GetContractsByVendorID", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -116,7 +116,7 @@ type ServiceServer interface {
 	GetRequestsByVendorID(context.Context, *GetRequestByGroupIDRequest) (*GetRequestByGroupIDResponse, error)
 	GetRequestsByContractorID(context.Context, *GetRequestByGroupIDRequest) (*GetRequestByGroupIDResponse, error)
 	GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error)
-	GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractResponse, error)
+	GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractByGroupIDResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -142,7 +142,7 @@ func (UnimplementedServiceServer) GetRequestsByContractorID(context.Context, *Ge
 func (UnimplementedServiceServer) GetContractDetails(context.Context, *GetContractRequest) (*GetContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractDetails not implemented")
 }
-func (UnimplementedServiceServer) GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractResponse, error) {
+func (UnimplementedServiceServer) GetContractsByVendorID(context.Context, *GetContractByGroupIDRequest) (*GetContractByGroupIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractsByVendorID not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
