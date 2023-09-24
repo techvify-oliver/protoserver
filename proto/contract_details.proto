@@ -33,5 +33,5 @@ message GetContractByGroupID {
   int32 remaining_amount = 6;
 }
 message GetContractByGroupIDResponse {
-  repeated GetContractByGroupID withdraw_requests = 1;
+  repeated GetContractByGroupID contracts = 1;
 }
