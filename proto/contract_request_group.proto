@@ -9,6 +9,7 @@ import "contract_details.proto";
 import "group_details.proto";
 import "user_details.proto";
 import "request_details.proto";
+import "email_details.proto";
 
 
 service Service {
@@ -25,4 +26,6 @@ service Service {
   rpc GetContractsByVendorID(GetContractByGroupIDRequest) returns (GetContractByGroupIDResponse);
 
   rpc RemoveAmountFromContractAfterCollected(RemoveAmountAfterCollectedRequest) returns (RemoveAmountAfterCollectedResponse);
+
+  rpc SendMailToMailService(EmailRequest) returns (EmailResponse);
 }
